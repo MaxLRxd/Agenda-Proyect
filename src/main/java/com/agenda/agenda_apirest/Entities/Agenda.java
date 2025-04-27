@@ -1,4 +1,5 @@
 package com.agenda.agenda_apirest.Entities;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -8,8 +9,9 @@ public class Agenda {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombreAgenda;
-    @OneToMany(mappedBy = "agenda", cascade = CascadeType.ALL)
-    private List<Nota> notas;
+    @OneToMany(mappedBy = "agenda", cascade = CascadeType.ALL, orphanRemoval=true)
+    private List<Nota> notas = new ArrayList<>();;
+    
     public Long getId() {
         return id;
     }

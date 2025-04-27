@@ -12,6 +12,10 @@ public class Nota {
     @ManyToOne
     @JoinColumn(name = "contacto_id")
     private Contacto contacto;
+    @ManyToOne
+    @JoinColumn(name = "agenda_id")
+    private Agenda agenda;
+    
     public Long getId() {
         return id;
     }
