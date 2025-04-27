@@ -1,7 +1,11 @@
 package com.agenda.agenda_apirest.Controller;
 import com.agenda.agenda_apirest.Entities.Contacto;
 import com.agenda.agenda_apirest.Repositories.ContactoRepository;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.util.List;
 
 @RestController
@@ -18,7 +22,9 @@ public class ContactoController {
     public Contacto create(@RequestBody Contacto c) { return repo.save(c); }
 
     @GetMapping("/{id}")
-    public Contacto getById(@PathVariable Long id) { return repo.findById(id).orElseThrow(); }
+    public Contacto getById(@PathVariable Long id) { return repo.findById(id)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contacto no encontrado"));
+    }
 
     @PutMapping("/{id}")
     public Contacto update(@PathVariable Long id, @RequestBody Contacto c) {

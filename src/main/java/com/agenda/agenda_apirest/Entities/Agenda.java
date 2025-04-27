@@ -10,5 +10,22 @@ public class Agenda {
     private String nombreAgenda;
     @OneToMany(mappedBy = "agenda", cascade = CascadeType.ALL)
     private List<Nota> notas;
-    // getters y setters
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getNombreAgenda() {
+        return nombreAgenda;
+    }
+    public void setNombreAgenda(String nombreAgenda) {
+        this.nombreAgenda = nombreAgenda;
+    }
+    public List<Nota> getNotas() {
+        return notas;
+    }
+    public void setNotas(List<Nota> notas) {
+        this.notas = notas;
+    }
 }

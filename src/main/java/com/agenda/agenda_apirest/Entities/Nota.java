@@ -12,9 +12,40 @@ public class Nota {
     @ManyToOne
     @JoinColumn(name = "contacto_id")
     private Contacto contacto;
-    // getters y setters
-    public void setId(Long id2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getTitulo() {
+        return titulo;
+    }
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    public String getTexto() {
+        return texto;
+    }
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+    public int getMes() {
+        return mes;
+    }
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+    public int getDia() {
+        return dia;
+    }
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+    public Contacto getContacto() {
+        return contacto;
+    }
+    public void setContacto(Contacto contacto) {
+        this.contacto = contacto;
     }
 }
