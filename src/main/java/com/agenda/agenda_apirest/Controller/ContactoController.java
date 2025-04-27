@@ -28,8 +28,14 @@ public class ContactoController {
 
     @PutMapping("/{id}")
     public Contacto update(@PathVariable Long id, @RequestBody Contacto c) {
+        Contacto contact = repo.findById(id)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "id no encontrado"));
+        contact.setNombre(c.getNombre());
+        contact.setDireccion(c.getDireccion());
+        contact.setTelefono(c.getTelefono());
+        contact.setLocalidad(c.getLocalidad());
         c.setId(id);
-        return repo.save(c);
+        return repo.save(contact);
     }
 
     @DeleteMapping("/{id}")

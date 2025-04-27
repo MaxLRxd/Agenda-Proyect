@@ -1,4 +1,5 @@
 package com.agenda.agenda_apirest.Controller;
+import com.agenda.agenda_apirest.Entities.Contacto;
 import com.agenda.agenda_apirest.Entities.Nota;
 import com.agenda.agenda_apirest.Repositories.NotaRepository;
 
@@ -27,8 +28,14 @@ public class NotaController {
 
     @PutMapping("/{id}")
     public Nota update(@PathVariable Long id, @RequestBody Nota n) {
+       Nota notas = repo.findById(id)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "id no encontrado"));
+        notas.setTitulo(n.getTitulo());
+        notas.setTexto(n.getTexto());
+        notas.setMes(n.getMes());
+        notas.setDia(n.getDia());
         n.setId(id);
-        return repo.save(n);
+        return repo.save(notas);
     }
 
     @DeleteMapping("/{id}")
