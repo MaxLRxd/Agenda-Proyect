@@ -1,5 +1,4 @@
 package com.agenda.agenda_apirest.Controller;
-import com.agenda.agenda_apirest.Entities.Contacto;
 import com.agenda.agenda_apirest.Entities.Nota;
 import com.agenda.agenda_apirest.Repositories.NotaRepository;
 
